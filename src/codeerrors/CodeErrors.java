@@ -9,6 +9,7 @@ public class CodeErrors {
         Scanner kb = new Scanner(System.in);
         boolean exit = false;
         int option;
+        System.out.println("~~~This is a project on data encoding and error correction by Stephen Melnick~~~");
         do{
             System.out.print("\nWhat would you like to do?\n1:detect Hamming Distance \n2:encode a bitstring\n3:check a bitstring for errors\n4:exit\n");
             String optionUnparsed = kb.nextLine();
