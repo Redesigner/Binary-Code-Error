@@ -41,11 +41,15 @@ public class BitString {
         return output;
     }
     public static BitString parseString(String x){
-        boolean[] output = new boolean[x.length()];
-        for(int i=0;i<x.length();i++){
-            output[i]=(x.charAt(i)=='1');
+        if (x.matches("[0-1]+") && x.length() > 0) {
+            boolean[] output = new boolean[x.length()];
+            for(int i=0;i<x.length();i++){
+                output[i]=(x.charAt(i)=='1');
+            }
+            return new BitString(output);
         }
-        return new BitString(output);
+        System.out.println("The string is not a bitstring");
+        return null;
     }
     public void flipBit(int x){
         values[x]=!values[x];

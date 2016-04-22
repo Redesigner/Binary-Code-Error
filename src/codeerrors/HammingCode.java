@@ -121,7 +121,7 @@ public class HammingCode {
                     }
                 //System.out.println(parity);
                 if(parity%2!=0){
-                    System.out.println("imparity at " + (i+1));
+                    //System.out.println("imparity at " + (i+1));
                     errorLocation+=(i+1);
                 }
             }
