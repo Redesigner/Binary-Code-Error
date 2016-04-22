@@ -22,17 +22,47 @@ public class HammingCode {
                 //System.out.println((i+1) + " is a parity bit");
                 int parity = 0;
                 int iteration = i+1;
-                for(;iteration+i<=values.length;iteration+=(i+1))
-                    for(int k = 0;k<=i;k++){
+                for(;iteration<=values.length;iteration+=(i+1))
+                    for(int k = 0;(k<=i&&iteration<=values.length);k++){
                         //System.out.println("checking " + (iteration));
                         if(values[iteration-1])
                             parity++;
                         iteration++;
                     }
-                //System.out.println("Encoding parity bit " + i + " to " + parity);
+                //System.out.println("Encoding parity bit " + (i+1) + " to " + parity);
                 values[i]=(parity%2!=0);
             }
         }
        return new BitString(values);
+    }
+    public static int checkParity(BitString x){
+        int errorLocation=0;
+        for(int i=0;i<x.length();i++){
+            if((i & (i+1))==0){
+                //System.out.println((i+1) + " is a parity bit");
+                int parity = 0;
+                int iteration = i+1;
+                for(;iteration<=x.length();iteration+=(i+1))
+                    for(int k = 0;(k<=i&&iteration<=x.length());k++){
+                        //System.out.println("checking " + (iteration));
+                        if(x.getValue(iteration-1))
+                            parity++;
+                        iteration++;
+                    }
+                //System.out.println(parity);
+                if(parity%2!=0){
+                    //System.out.println("error at " + (i+1));
+                    errorLocation+=(i+1);
+                }
+            }
+        }
+        if(errorLocation==0){
+            System.out.println("There is no error");
+            return 0;
+        }
+        else{
+            System.out.println("There is an error at " + errorLocation + " in bitstring " + x.toString());
+            return errorLocation;
+        }
     }
 }

@@ -47,4 +47,7 @@ public class BitString {
         }
         return new BitString(output);
     }
+    public void flipBit(int x){
+        values[x]=!values[x];
+    }
 }
