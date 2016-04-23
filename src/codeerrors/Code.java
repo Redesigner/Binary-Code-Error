@@ -31,6 +31,24 @@ public class Code {
         }
     return minDist;
     }
+    public BitString findClosest(BitString x){
+        int distance = x.length();
+        boolean tooManyErrors = false;
+        int closest = -1;
+        for(int i=0;i<n;i++){
+            BitString test = BitString.Xor(codewords[i],x);
+            int hamming = test.size();
+            if(hamming<distance){
+                distance=hamming;
+                closest=i;
+            }else if(hamming==distance){
+                tooManyErrors = true;
+            }
+        }
+        if(!tooManyErrors)
+            return(codewords[closest]);
+        else return null;
+    }
     /*public int[] findErrors(){
         int[] output;
         for(int i=0;i<bitlength;i++){

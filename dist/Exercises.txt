@@ -1,0 +1,46 @@
+1a. no
+1b. yes
+1c. yes
+1d. yes
+2a. 5
+b. 3
+c. 4
+d. 6
+3a. 95.1%
+b. .961%
+c. .0097%
+d. .000098%
+4a. detect 6 correct 3
+b. detect 1 correct 0
+c. cannot detect any, the code is wrong
+5. the hamming distance is 5, can correct up to 2 errors
+6. if the minimum distance between the codewords is 4, the codeword with two errors will be equally close to at least two of those codewords, and it will be possible to detect that there is an error, but not possible to tell which one, since the codeword in error is equally close to those two words (it has two nearest neighbors). If there is only one error, the codeword in error will be closest to one codeword and can be repaired by using the nearest neighbor. If there are more than 2 errors, the codeword will be corrected by nearest neighbor to the wrong codeword and as such the error will be detected and attempted to be fixed by the nearest neighbor method, but will be mapped incorrectly. If there are four errors, the codeword in error could map correctly to a different code word and no error will be detected. (The nearest neighbor correction portion of my code should prove this).
+7. 2^9/C(9,0)+C(9,1)+C(9,2)=512/46~11 codewords
+8. n is in the form (2c+1), the distance will always be the length n, by the sphere packing formula,2k+1=n, 2k+1=2c+1, 2^n/C(n,0)+...C(n,c) will always = 2, meaning that a code of two strings is perfect
+9. assume that x = 111 and y = 101, m=1,. w(x+y)=w(010)=1. w(x)+w(y)-2m=w(111)+w(101)-2(2)=3+2-4=1, the two are equal
+10. [11111] such that x1+x2+x3+x4+x5=0
+11. [100100100]
+	[010010010]
+	[001001001]
+	
+12. [1101100]
+	[1011010]
+	[1110001]
+	
+13. [10110]
+	[01011]
+	
+14. 1100110
+	1010101
+	1001100
+	0110011
+	0101010
+	0011001
+	1110000
+	1101000
+	0111100
+	0000000
+	1111111
+	
+15a. In a binary code with hamming distance d, up to d-1 erasures can be detected. Assuming that there are no other errors, the remaining bits of the codeword in erasure can be compared to the code. The nearest neighbor of only these bits will still be the original codeword. For example, the code {0000,1111} has a distance of 4.If 1111 was sent and if the bits were only erased at 3 positions, and we are left with 1xxx, we can see that the nearest neighbor of this codeword is still 1111 and we have corrected all 3 errors
+b. If there are errors and not just erasures, we can start by looking at the bits in positions that do not have erasures. Looking at the nearest neighbor of the bits remaining after the number of erasures, r, we can again apply what was stated in 6.- that we can only properly correct the errors if there are less than t/2-1 or (d-r)+1=2t, or 2 in the remaining bits, where d-r is the distance of the remaining bits. It follows that we can correct t errors and r erasure if d=2t+r+1
